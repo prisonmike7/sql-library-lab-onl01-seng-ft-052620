@@ -20,7 +20,13 @@ end
 
 
 def select_value_and_count_of_most_prolific_species
-  "Write your SQL query here"
+  <<-SQL
+    SELECT characters.species, COUNT(characters.id)
+    FROM characters
+    GROUP BY characters.species
+    ORDER BY COUNT(characters.id) DESC
+    LIMIT 1;
+  SQL
 end
 
 def select_name_and_series_subgenres_of_authors
